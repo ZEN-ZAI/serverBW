@@ -32,17 +32,17 @@
         }
         else if (mysqli_num_rows($result) == 0)
         {
-			echo "Room is fully, ";
+          echo "Room is fully, ";
 
-			$resultLastRoom = mysqli_query($conn ,"SELECT room_id FROM room ORDER BY room_id DESC LIMIT 1");
-			$row = mysqli_fetch_assoc($resultLastRoom);
-			$lastRoomId = $row['room_id']; $lastRoomId++;
+          $resultLastRoom = mysqli_query($conn ,"SELECT room_id FROM room ORDER BY room_id DESC LIMIT 1");
+          $row = mysqli_fetch_assoc($resultLastRoom);
+          $lastRoomId = $row['room_id']; $lastRoomId++;
 
-			mysqli_query($conn ,"INSERT INTO room (room_id,player1_name,player2_name,player1_Character,player2_Character,queue)
+          mysqli_query($conn ,"INSERT INTO room (room_id,player1_name,player2_name,player1_Character,player2_Character,queue)
                                  VALUES ('".$lastRoomId."','".$player_name."',NULL,'".$select_character."',NULL,NULL)
                                  ");
 
-			echo "Create new room[".$lastRoomId."]";
+          echo "Create new room[".$lastRoomId."]";
 
         }
 

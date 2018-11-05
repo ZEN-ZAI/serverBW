@@ -11,18 +11,20 @@
 
         $conn = new mysqli($hostname,$username,$password,$database);
 
-        if(!$conn){
+        if(!$conn)
+        {
           die("Connection Failed. ". mysqli_connect_error());
         }
-
-        $result = mysqli_query($conn ,"SELECT * FROM `".$room_id."` ");
-
-        if(mysqli_num_rows($result) > 0)
+        else
         {
-			while($row = mysqli_fetch_assoc($result))
-			{
+          $result = mysqli_query($conn ,"SELECT * FROM `".$room_id."` ");
+          if(mysqli_num_rows($result) > 0)
+          {
+            while($row = mysqli_fetch_assoc($result))
+            {
               echo "".$row['block'].";";
-			}
-		}
+            }
+          }
+        }
 
 ?>

@@ -9,12 +9,16 @@
         $username = $_POST["username"];
         $password = $_POST["password"];
         $room_id = $_POST["room_id"];
+        $sizeMap = $_POST["sizeMap"];
 
         $conn = new mysqli($hostname,$username,$password,$database);
 
-        if(!$conn){
+        if(!$conn)
+        {
 					die("Connection Failed. ". mysqli_connect_error());
 				}
+        else
+        {
 
         $createTable = "CREATE TABLE `".$room_id."` (
                 index_x INT(2) NULL,
@@ -25,9 +29,9 @@
 
         mysqli_query($conn ,$createTable);
         $num = 0;
-        for ($i=0; $i <15 ; $i++)
+        for ($i=0; $i < $sizeMap ; $i++)
         {
-          for ($j=0; $j < 15; $j++)
+          for ($j=0; $j < $sizeMap; $j++)
           {
             mysqli_query($conn ,"INSERT INTO `".$room_id."` (index_x,index_y,block,block_number) VALUES ('".$j."','".$i."',NULL,'".$num."')");
             $num++;
@@ -35,5 +39,6 @@
         }
 
         echo "Connection Succeeded, Create table.";
+      }
 
 ?>

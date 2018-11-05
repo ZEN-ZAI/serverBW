@@ -1,6 +1,5 @@
 <?php
         // Configuration
-
         $hostname = 'localhost';
         $database = 'BrainWash';
         $CHAR_SET = "charset=utf8";
@@ -9,6 +8,7 @@
         $username = $_POST["username"];
         $password = $_POST["password"];
         $room_id = $_POST["room_id"];
+        $map = $_POST["map"];
 
         $conn = new mysqli($hostname,$username,$password,$database);
 
@@ -18,16 +18,8 @@
 				}
         else
         {
-
-
-
-          $result = mysqli_query($conn ,"DROP TABLE `".$room_id."` ");
-
-          if(!mysqli_error($result))
-          {
-            mysqli_query($conn ,"DELETE FROM room WHERE room_id = `".$room_id."`");
-            echo "Delete Table, `".$room_id."` ";
-          }
+          mysqli_query($conn ,"UPDATE `".$room_id."` SET block = '".$map."' WHERE block_number LIKE '".$num."' ");
+          echo "Update Map, Succeeded";
         }
 
 ?>

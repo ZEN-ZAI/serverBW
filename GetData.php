@@ -27,7 +27,7 @@
 
             if($row['room_id'] == $room)
             {
-              echo "Room:".$row['room_id'].",player1_name:".$row['player1_name']. ",player2_name:".$row['player2_name'].",player1_character:".$row['player1_character'].",player2_character:".$row['player2_character'].",queue:".$row['queue']. "";
+              echo "Room:".$row['room_id'].",map_size:".$row['map_size'].",player1_name:".$row['player1_name']. ",player2_name:".$row['player2_name'].",player1_character:".$row['player1_character'].",player2_character:".$row['player2_character'].",queue:".$row['queue']. "";
               break;
             }
 					}

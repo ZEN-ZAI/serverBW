@@ -18,15 +18,12 @@
 				}
         else
         {
-
-
-
           $result = mysqli_query($conn ,"DROP TABLE `".$room_id."` ");
 
           if(!mysqli_error($result))
           {
-            mysqli_query($conn ,"DELETE FROM room WHERE room_id = `".$room_id."`");
-            echo "Delete Table, `".$room_id."` ";
+            mysqli_query($conn ,"DELETE FROM room WHERE room_id LIKE ".$room_id." ");
+            echo "Delete Table ".$room_id." ";
           }
         }
 

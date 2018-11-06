@@ -9,7 +9,7 @@
         $username = $_POST["username"];
         $password = $_POST["password"];
         $room_id = $_POST["room_id"];
-        $sizeMap = $_POST["sizeMap"];
+        $sizeMap = $_POST["mapSize"];
 
         $conn = new mysqli($hostname,$username,$password,$database);
 

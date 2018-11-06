@@ -9,6 +9,7 @@
         $password = $_POST["password"];
         $player_name = $_POST["playername"];
         $select_character = $_POST["select_character"];
+        $map_size = $_POST["map_size"];
 				$lastRoomId;
 
         //Make Connection
@@ -19,7 +20,7 @@
         	die("Connection Failed. ". mysqli_connect_error());
         }
 
-        $result = mysqli_query($conn ,"SELECT * FROM  room  WHERE player2_name IS NULL LIMIT 1 ");
+        $result = mysqli_query($conn ,"SELECT * FROM  room  WHERE player2_name IS NULL AND mapSize = '".$map_size."' LIMIT 1 ");
 
         if(mysqli_num_rows($result) == 1)
         {
@@ -38,8 +39,8 @@
           $row = mysqli_fetch_assoc($resultLastRoom);
           $lastRoomId = $row['room_id']; $lastRoomId++;
 
-          mysqli_query($conn ,"INSERT INTO room (room_id,player1_name,player2_name,player1_Character,player2_Character,queue)
-                                 VALUES ('".$lastRoomId."','".$player_name."',NULL,'".$select_character."',NULL,NULL)
+          mysqli_query($conn ,"INSERT INTO room (room_id,map_size,player1_name,player2_name,player1_Character,player2_Character,queue)
+                                 VALUES ('".$lastRoomId."','".$map_size."','".$player_name."',NULL,'".$select_character."',NULL,NULL)
                                  ");
 
           echo "Create new room[".$lastRoomId."]";

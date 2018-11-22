@@ -20,7 +20,7 @@
         	die("Connection Failed. ". mysqli_connect_error());
         }
 
-        $result = mysqli_query($conn ,"SELECT * FROM  room  WHERE player2_name IS NULL AND mapSize = '".$map_size."' LIMIT 1 ");
+        $result = mysqli_query($conn ,"SELECT * FROM  room  WHERE player2_name IS NULL AND map_size = '".$map_size."' LIMIT 1 ");
 
         if(mysqli_num_rows($result) == 1)
         {
